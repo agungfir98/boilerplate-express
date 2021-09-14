@@ -1,4 +1,3 @@
-var { response } = require('express');
 var express = require('express');
 var app = express();
 
@@ -12,9 +11,13 @@ console.log("Hello World");
 
 app.get("/json", function (req, res) {
     if (process.env.MESSAGE_STYLE === "uppercase") {
-        response = "Hello json".toUpperCase();
+        res.json({
+            "message": "true"
+        })
     }else {
-        response = "Hello json";
+        res.json({
+            "message": "false"
+        })
     }
 })
 
