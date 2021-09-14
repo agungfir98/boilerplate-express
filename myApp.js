@@ -10,7 +10,7 @@ app.get( "/", function (req, res) {
 console.log("Hello World");
 
 app.get("/json", function (req, res) {
-    if (process.env.MESSAGE_STYLE = "lower") {
+    if (process.env.MESSAGE_STYLE == "lower") {
         res.json({
             "message": "Hello json".toUpperCase()
         })
