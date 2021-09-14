@@ -9,7 +9,11 @@ app.get( "/", function (req, res) {
 })
 console.log("Hello World");
 
-
+app.get("/json", function (req, res) {
+    res.json({
+        "message": "Hello json"
+    })
+})
 
 
 
