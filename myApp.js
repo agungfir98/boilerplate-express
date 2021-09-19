@@ -52,6 +52,11 @@ app.route("/name").get(function (req, res) {
   res.json({
     name: first + " " + last
   })
+}).post(function (req, res) {
+  const {first, last} = req.body;
+  res.json({
+    name: first + " " + last
+  })
 })
 
 
