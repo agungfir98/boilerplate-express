@@ -44,13 +44,12 @@ app.get("/now", function (req, res, next) {
 )
 
 // lesson: get query parameter input from the client
-app.route("/name").get(function (req, res, next) {
-  const {first: firstname, last: lastname} = req.query;
+app.route("/name").get(function (req, res) {
+  const {first, last} = req.query
   res.json({
-    name: {firstname} + " " + {lastname}
-  });
-  next();
-});
+    name: first + " " + last
+  })
+})
 
 
 
