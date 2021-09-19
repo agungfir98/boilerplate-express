@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 require("dotenv").config();
 
+//  lesson: root-level request logger middleware
 app.use(function (req, res, next) {
   console.log(req.method + " "+ req.path + " - " + req.ip);
   next();
@@ -24,14 +25,14 @@ app.get("/json", function (req, res) {
     })
   }
 });
-
+// lesson: get route parameter input from the client
 app.get("/:word/echo", function(req, res) {
   const { word } = req.params
   res.json({
     echo: word
   })
 })
-
+// lesson: Chain middleware to create time server
 app.get("/now", function (req, res, next) {
   req.time = new Date().toString();
   next();
@@ -42,8 +43,14 @@ app.get("/now", function (req, res, next) {
 }
 )
 
-
-
+// lesson: get query parameter input from the client
+app.route("/name").get(function (req, res, next) {
+  const {first: firstname, last: lastname} = req.query;
+  res.json({
+    name: {firstname} + " " + {lastname}
+  });
+  next();
+});
 
 
 
